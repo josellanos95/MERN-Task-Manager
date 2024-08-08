@@ -1,9 +1,8 @@
 import axios from "./axios";
 
-
 export const registerRequest = async (user) => {
   try {
-    const response = await axios.post(`/register`, user);
+    const response = await axios.post('https://mern-task-project.vercel.app/api/register', user);
     return response.data;
   } catch (error) {
     if (error.response && error.response.data) {
@@ -20,7 +19,7 @@ export const registerRequest = async (user) => {
 
 export const loginRequest = async (user) => {
   try {
-    const response = await axios.post(`/login`, user);
+    const response = await axios.post('https://mern-task-project.vercel.app/api/login', user);
     return response.data;
   } catch (error) {
     if (error.response && error.response.data) {
@@ -37,7 +36,7 @@ export const loginRequest = async (user) => {
 
 export const verifyTokenRequest = async () => {
   try {
-    const response = await axios.get(`/verify`);
+    const response = await axios.get('https://mern-task-project.vercel.app/api/verify');
     return response.data;
   } catch (error) {
     if (error.response && error.response.data) {
