@@ -6,9 +6,11 @@ import taskRoutes from "./routes/tasks.routes.js";
 import cors from "cors";
 
 const app = express();
-app.use(cors({ 
+app.use(cors({
     origin: "https://mern-task-manager-client.vercel.app",
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(morgan("dev"));
 app.use(express.json());
