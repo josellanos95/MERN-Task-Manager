@@ -20,5 +20,11 @@
         "src": "/(.*)",
         "dest": "client/dist/$1"
       }
-    ]
+    ],
+    "rewrites": [
+        {
+          "source": "/api/(.*)",
+          "destination": "https://mern-task-project.vercel.app/api/$1"
+        }
+      ]
   }
