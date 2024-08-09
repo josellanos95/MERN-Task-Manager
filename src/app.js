@@ -7,7 +7,7 @@ import cors from "cors";
 
 const app = express();
 app.use(cors({ 
-    origin: "https://mern-task-project.vercel.app/",
+    origin: "https://mern-task-project.vercel.app",
     credentials: true
 }));
 app.use(morgan("dev"));
