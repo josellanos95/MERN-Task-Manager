@@ -9,7 +9,7 @@ function Footer() {
   return (
     <footer className="bg-gray-800 dark:bg-gray-900 text-white py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Columna 1: Enlaces */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Enlaces rápidos</h3>
@@ -58,13 +58,13 @@ function Footer() {
           </div>
 
           {/* Columna 3: Redes sociales */}
-          <div>
+          <div className="sm:col-span-2 lg:col-span-1">
             <h3 className="text-lg font-semibold mb-4">Síguenos</h3>
             <div className="flex space-x-4">
               <a href="https://github.com/josellanos95" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition duration-300">
                 <FaGithub className="h-6 w-6" />
               </a>
-              <a href="www.linkedin.com/in/jose-maria-llanos" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition duration-300">
+              <a href="https://www.linkedin.com/in/jose-maria-llanos" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition duration-300">
                 <FaLinkedin className="h-6 w-6" />
               </a>
               <a href="https://x.com/JoseLlanoss" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition duration-300">
