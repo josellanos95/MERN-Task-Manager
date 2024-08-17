@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { UserPlusIcon } from '@heroicons/react/24/solid';
 
 function RegisterPage() {
@@ -40,16 +40,16 @@ function RegisterPage() {
   });
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100 dark:from-gray-800 dark:to-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100 dark:from-gray-800 dark:to-gray-900 py-6 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
-          <div className="px-6 py-8">
+          <div className="px-4 sm:px-6 py-8">
             <div className="flex justify-center mb-6">
               <div className="bg-indigo-100 dark:bg-indigo-900 rounded-full p-3">
-                <UserPlusIcon className="h-8 w-8 text-indigo-600 dark:text-indigo-400" />
+                <UserPlusIcon className="h-6 w-6 sm:h-8 sm:w-8 text-indigo-600 dark:text-indigo-400" />
               </div>
             </div>
-            <h2 className="text-center text-3xl font-extrabold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white mb-4">
               Crea tu cuenta
             </h2>
             {formErrors.general && (
@@ -118,9 +118,9 @@ function RegisterPage() {
               </div>
             </form>
           </div>
-          <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-600">
+          <div className="px-4 sm:px-6 py-4 bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-600">
             <p className="text-xs text-gray-600 dark:text-gray-400 text-center">
-              ¿Ya tienes una cuenta? <a href="/login" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">Inicia sesión</a>
+              ¿Ya tienes una cuenta? <Link to="/login" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">Inicia sesión</Link>
             </p>
           </div>
         </div>
