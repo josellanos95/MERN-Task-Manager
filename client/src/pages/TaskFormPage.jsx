@@ -38,13 +38,13 @@ function TaskFormPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
-      <div className="text-center p-8 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md p-6 sm:p-8 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white mb-6 text-center">
           {params.id ? "Editar tarea" : "Crear nueva tarea"}
         </h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="mb-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <div>
             <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" htmlFor="title">
               Título
             </label>
@@ -57,7 +57,7 @@ function TaskFormPage() {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-white dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
-          <div className="mb-4">
+          <div>
             <label className="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" htmlFor="description">
               Descripción
             </label>
@@ -66,20 +66,20 @@ function TaskFormPage() {
               name="description"
               placeholder="Descripción de la tarea"
               {...register("description", { required: true })}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-white dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-white dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32"
             ></textarea>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 sm:space-x-4">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out"
+              className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out"
             >
               {params.id ? "Actualizar" : "Crear"}
             </button>
             <button
               type="button"
               onClick={handleCancel}
-              className="bg-red-500 hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out"
+              className="w-full sm:w-auto bg-red-500 hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out"
             >
               Cancelar
             </button>
