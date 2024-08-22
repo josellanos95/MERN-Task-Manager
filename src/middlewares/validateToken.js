@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { TOKEN_SECRET } from "../config/config.js"; // Asegúrate de importar TOKEN_SECRET
+import { TOKEN_SECRET } from "../config/config.js";
 
 export const authRequired = (req, res, next) => {
   const token = req.cookies.token || req.headers["authorization"];
@@ -8,7 +8,7 @@ export const authRequired = (req, res, next) => {
   }
   try {
     const decoded = jwt.verify(token, TOKEN_SECRET);
-    req.user = decoded; // Cambia esto de decoded.user a decoded
+    req.user = decoded;
     next();
   } catch (error) {
     res.status(401).json({ message: "Token is not valid" });
