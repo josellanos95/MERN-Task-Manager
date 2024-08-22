@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { isTokenExpired } from '../../../../../c:/Users/Jose/Desktop/Mern-Crud-Auth/src/libs/tokenUtils.js';
+import { isTokenExpired } from '../libs/tokenUtils.js';
 
 const instance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
