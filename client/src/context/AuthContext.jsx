@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
   const signin = async (user) => {
     try {
       const response = await loginRequest(user);
-      Cookies.set("token", response.token); // Asegúrate de que el token se almacene correctamente
+      Cookies.set("token", response.token, { domain: 'mern-task-manager-three.vercel.app' }); // Asegúrate de que el dominio sea correcto
       console.log(response.token); // Verifica que el token no sea undefined
       setUser(response);
       setIsAuthenticated(true);
