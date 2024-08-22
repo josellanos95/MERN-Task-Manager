@@ -1,11 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
+import { process } from 'node';
 
 const instance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
-    withCredentials: true,
-    headers: {
-        "Content-Type": "application/json"
-    }
+  baseURL: process.env.VITE_API_URL,
+  withCredentials: true, // Asegúrate de incluir las credenciales
 });
 
 export default instance;
