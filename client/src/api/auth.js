@@ -1,8 +1,11 @@
 import axios from "./axios";
+import Cookies from 'js-cookie';
 
 export const registerRequest = async (user) => {
   try {
     const response = await axios.post('/register', user);
+    // Guardar el token en las cookies
+    Cookies.set('token', response.data.token);
     return response.data;
   } catch (error) {
     if (error.response && error.response.data) {
