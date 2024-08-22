@@ -5,7 +5,6 @@ import { createContext, useState, useContext, useEffect } from "react";
 import { registerRequest, loginRequest, verifyTokenRequest } from "../api/auth";
 import Cookies from "js-cookie";
 import { set } from "mongoose";
-import { token } from "morgan";
 
 export const AuthContext = createContext();
 
