@@ -2,6 +2,9 @@ import taskModel from "../models/task.model.js";
 
 export const getTasks = async (req, res) => {
   try {
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ message: "User not authenticated properly" });
+    }
     const tasks = await taskModel
       .find({
         user: req.user.id,
