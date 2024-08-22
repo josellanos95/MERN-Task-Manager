@@ -25,10 +25,16 @@ export const AuthProvider = ({ children }) => {
   const signup = async (user) => {
     try {
       const response = await registerRequest(user);
-      setUser(response);
-      setIsAuthenticated(true);
-      setErrors([]);
+      if (response.token) {
+        Cookies.set("token", response.token);
+        setUser(response);
+        setIsAuthenticated(true);
+        setErrors([]);
+      } else {
+        throw new Error("No se recibió un token en la respuesta del registro");
+      }
     } catch (error) {
+      console.error("Error durante el registro:", error);
       setErrors(Array.isArray(error) ? error : [error.toString()]);
     }
   };
@@ -36,11 +42,16 @@ export const AuthProvider = ({ children }) => {
   const signin = async (user) => {
     try {
       const response = await loginRequest(user);
-      Cookies.set("token", response.token);
-      setUser(response);
-      setIsAuthenticated(true);
-      setErrors([]);
+      if (response.token) {
+        Cookies.set("token", response.token);
+        setUser(response);
+        setIsAuthenticated(true);
+        setErrors([]);
+      } else {
+        throw new Error("No se recibió un token en la respuesta");
+      }
     } catch (error) {
+      console.error("Error durante el inicio de sesión:", error);
       setErrors(Array.isArray(error) ? error : [error.toString()]);
     }
   };
