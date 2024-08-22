@@ -5,6 +5,7 @@ import { createContext, useState, useContext, useEffect } from "react";
 import { registerRequest, loginRequest, verifyTokenRequest } from "../api/auth";
 import Cookies from "js-cookie";
 import { set } from "mongoose";
+import { token } from "morgan";
 
 export const AuthContext = createContext();
 
@@ -36,8 +37,8 @@ export const AuthProvider = ({ children }) => {
   const signin = async (user) => {
     try {
       const response = await loginRequest(user);
-      Cookies.set("token", response.token, { domain: 'mern-task-manager-three.vercel.app' }); // Asegúrate de que el dominio sea correcto
-      console.log(response.token); // Verifica que el token no sea undefined
+      Cookies.set("token", response.token);
+      console.log(token)
       setUser(response);
       setIsAuthenticated(true);
       setErrors([]);
