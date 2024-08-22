@@ -27,9 +27,9 @@ export const register = async (req, res) => {
     });
 
     const userSaved = await newUser.save();
-    const token = await createAccessToken({ id: userFound._id });
-    res.cookie("token", token);
+    const token = await createAccessToken({ id: userSaved._id });
     res.json({
+      token,
       _id: userSaved._id,
       username: userSaved.username,
       email: userSaved.email,
@@ -52,9 +52,9 @@ export const login = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: "Contraseña incorrecta" });
 
-    const token = await createAccessToken({ id: userSaved._id });
-    res.cookie("token", token);
+    const token = await createAccessToken({ id: userFound._id });
     res.json({
+      token,
       _id: userFound._id,
       username: userFound.username,
       email: userFound.email,
@@ -84,14 +84,14 @@ export const profile = async (req, res) => {
 };
 
 export const verifyToken = async (req, res) => {
-  const token = req.cookies.token;
-  if (!token) return res.status(400).json({ message: "Token no encontrado" });
+  const token = req.headers["authorization"]?.split(" ")[1];
+  if (!token) return res.status(401).json({ message: "Token no encontrado" });
 
   jwt.verify(token, TOKEN_SECRET, async (err, user) => {
-    if (err) return res.status(400).json({ message: "Token no válido" });
+    if (err) return res.status(401).json({ message: "Token no válido" });
 
     const userFound = await User.findById(user.id);
-    if (!userFound) return res.status(400).json({ message: "Usuario no encontrado" });
+    if (!userFound) return res.status(404).json({ message: "Usuario no encontrado" });
 
     return res.json({
       _id: userFound._id,
