@@ -36,7 +36,10 @@ function RegisterPage() {
   }, [registerErrors, setError]);
 
   const onSubmit = handleSubmit(async (values) => {
-    await signup(values);
+    const response = await signup(values);
+    if (response.token){
+      localStorage.setItem("token", response.token);
+    }
   });
 
   return (
