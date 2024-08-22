@@ -7,7 +7,6 @@ import {
   getTaskRequest,
   updateTaskRequest
 } from "../api/task";
-import { Router } from "express";
 const TaskContext = createContext();
 
 export const useTask = () => {
@@ -26,15 +25,7 @@ export function TaskProvider({ children }) {
       const res = await getTasksRequest();
       setTasks(res);
     } catch (error) {
-      console.error("Error fetching tasks:", error);
-      if (error.response && error.response.status === 401) {
-        Router.push("/login");
-        
-        // Manejar el error de autenticación, por ejemplo, redirigiendo al login
-        // o actualizando el estado de autenticación
-        
-
-      }
+      console.error(error);
     }
   };
   const createTask = async (task) => {
